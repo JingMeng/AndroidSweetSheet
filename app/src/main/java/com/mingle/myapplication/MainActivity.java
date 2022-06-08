@@ -10,9 +10,9 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.mingle.entity.MenuEntity;
-import com.mingle.sweetpick.BlurEffect;
+import com.mingle.sweetpick.effect.BlurEffect;
 import com.mingle.sweetpick.delegate.CustomDelegate;
-import com.mingle.sweetpick.DimEffect;
+import com.mingle.sweetpick.effect.DimEffect;
 import com.mingle.sweetpick.delegate.RecyclerViewDelegate;
 import com.mingle.sweetpick.SweetSheet;
 import com.mingle.sweetpick.delegate.ViewPagerDelegate;

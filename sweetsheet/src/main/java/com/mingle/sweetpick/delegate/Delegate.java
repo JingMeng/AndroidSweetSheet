@@ -7,7 +7,7 @@ import android.widget.ImageView;
 
 import com.mingle.SimpleAnimationListener;
 import com.mingle.entity.MenuEntity;
-import com.mingle.sweetpick.Effect;
+import com.mingle.sweetpick.effect.Effect;
 import com.mingle.sweetpick.SweetSheet;
 import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.ObjectAnimator;

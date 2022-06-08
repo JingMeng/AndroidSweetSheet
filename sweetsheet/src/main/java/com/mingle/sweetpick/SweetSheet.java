@@ -12,6 +12,8 @@ import android.widget.RelativeLayout;
 
 import com.mingle.entity.MenuEntity;
 import com.mingle.sweetpick.delegate.Delegate;
+import com.mingle.sweetpick.effect.Effect;
+import com.mingle.sweetpick.effect.NoneEffect;
 
 import java.util.ArrayList;
 import java.util.List;

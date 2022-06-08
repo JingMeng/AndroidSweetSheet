@@ -1,4 +1,4 @@
-package com.mingle.sweetpick;
+package com.mingle.sweetpick.effect;
 
 import android.view.ViewGroup;
 import android.widget.ImageView;
