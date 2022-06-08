@@ -91,8 +91,7 @@ public abstract class Delegate implements View.OnClickListener {
 
         ViewHelper.setTranslationY(mRootView, 0);
         mEffect.effect(mParentVG,mBg);
-        ViewGroup.LayoutParams lp =
-                new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 
         if(mBg.getParent()!= null){
             mParentVG.removeView(mBg);
@@ -142,8 +141,7 @@ public abstract class Delegate implements View.OnClickListener {
         translationOut.addListener(new SimpleAnimationListener() {
             @Override
             public void onAnimationStart(Animator animation) {
-                mStatus =
-                        SweetSheet.Status.DISMISSING;
+                mStatus = SweetSheet.Status.DISMISSING;
             }
 
             @Override

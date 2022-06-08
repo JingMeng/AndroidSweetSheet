@@ -58,7 +58,7 @@ public class SweetView extends View {
     private void init() {
         mPaint = new Paint();
         mPaint.setAntiAlias(true);
-//        mPaint.setStyle(Paint.Style.FILL);
+        //mPaint.setStyle(Paint.Style.FILL);
         mPaint.setColor(getResources().getColor(android.R.color.white));
         mMaxArcHeight=getResources().getDimensionPixelSize(R.dimen.arc_max_height);
     }
@@ -149,6 +149,7 @@ public class SweetView extends View {
             case STATUS_DOWN:
                 currentPointY = mMaxArcHeight;
                 break;
+            default:
         }
 
         mPath.moveTo(0, currentPointY);

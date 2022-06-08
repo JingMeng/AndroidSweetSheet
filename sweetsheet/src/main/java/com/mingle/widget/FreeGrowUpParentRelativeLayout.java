@@ -17,7 +17,6 @@ import com.mingle.sweetsheet.R;
  * @version 1.0
  * @date 2015/8/8.
  * @github: https://github.com/zzz40500
- *
  */
 public class FreeGrowUpParentRelativeLayout extends RelativeLayout implements GrowUpParent {
 
@@ -31,7 +30,7 @@ public class FreeGrowUpParentRelativeLayout extends RelativeLayout implements Gr
 
     private boolean isGrowUp = true;
 
-    private int mOffset =-1;
+    private int mOffset = -1;
 
     public FreeGrowUpParentRelativeLayout(Context context) {
         super(context);
@@ -44,9 +43,8 @@ public class FreeGrowUpParentRelativeLayout extends RelativeLayout implements Gr
 
     private void init(AttributeSet attrs) {
 
-        TypedArray typedArray=getContext().obtainStyledAttributes(attrs,
-                R.styleable.FreeGrowUpParentRelativeLayout);
-        mOffset=  typedArray.getDimensionPixelOffset(R.styleable.FreeGrowUpParentRelativeLayout_offset,-1);
+        TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.FreeGrowUpParentRelativeLayout);
+        mOffset = typedArray.getDimensionPixelOffset(R.styleable.FreeGrowUpParentRelativeLayout_offset, -1);
         typedArray.recycle();
     }
 
@@ -70,7 +68,6 @@ public class FreeGrowUpParentRelativeLayout extends RelativeLayout implements Gr
     }
 
 
-
     @Override
     public boolean onTouchEvent(MotionEvent event) {
 
@@ -86,13 +83,13 @@ public class FreeGrowUpParentRelativeLayout extends RelativeLayout implements Gr
 
     private void changeLayoutParamsHeight(int distance) {
         ViewGroup.LayoutParams layoutParams = this.getLayoutParams();
-        int height= Math.min(currentHeight + distance, parentHeight+mOffset);
+        int height = Math.min(currentHeight + distance, parentHeight + mOffset);
 
-        if(height <originalHeight){
-//            height= (int) (originalHeight-(originalHeight-height)*0.05);
-            height= originalHeight;
+        if (height < originalHeight) {
+            //height= (int) (originalHeight-(originalHeight-height)*0.05);
+            height = originalHeight;
         }
-        layoutParams.height =height;
+        layoutParams.height = height;
         requestLayout();
     }
 
@@ -134,15 +131,17 @@ public class FreeGrowUpParentRelativeLayout extends RelativeLayout implements Gr
             case MotionEvent.ACTION_CANCEL:
 
                 break;
+            default:
+
         }
         return true;
     }
 
-    public void setContentHeight(int contentHeight){
+    public void setContentHeight(int contentHeight) {
 
-        originalHeight=-1;
+        originalHeight = -1;
         ViewGroup.LayoutParams layoutParams = this.getLayoutParams();
-        layoutParams.height = contentHeight+getContext().getResources().getDimensionPixelOffset(R.dimen.arc_max_height);
+        layoutParams.height = contentHeight + getContext().getResources().getDimensionPixelOffset(R.dimen.arc_max_height);
 
         requestLayout();
 

@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             xmlns:app="http://schemas.android.com/apk/res-auto"
-             android:orientation="vertical">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <com.mingle.widget.FreeGrowUpParentRelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/freeGrowUpParentF"
         android:layout_width="match_parent"
         android:layout_height="@dimen/sheet_height"
         android:layout_gravity="bottom"
-        android:id="@+id/freeGrowUpParentF"
-        app:offset="@dimen/arc_max_height"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:offset="@dimen/arc_max_height">
 
         <com.mingle.widget.SweetView
             android:id="@+id/sv"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
 
         <com.mingle.widget.IndicatorView
             android:id="@+id/indicatorView"
@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center_horizontal"
-            android:paddingTop="70dp"/>
+            android:paddingTop="70dp" />
 
         <android.support.v4.view.ViewPager
             android:id="@+id/vp"
@@ -33,7 +33,7 @@
             android:layout_height="fill_parent"
             android:layout_marginTop="42dp"
             android:clipChildren="false"
-            android:overScrollMode="never"/>
+            android:overScrollMode="never" />
     </com.mingle.widget.FreeGrowUpParentRelativeLayout>
 
 </FrameLayout>
