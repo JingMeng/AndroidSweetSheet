@@ -39,11 +39,11 @@ public class BlurEffect implements Effect {
     @Override
     public void effect(ViewGroup vp, ImageView view) {
 
-        if(mBlurAsyncTask!= null){
+        if (mBlurAsyncTask != null) {
             mBlurAsyncTask.cancel(true);
         }
 
-        mBlurAsyncTask= new BlurAsyncTask(vp, view, Blur.convertFromView(vp));
+        mBlurAsyncTask = new BlurAsyncTask(vp, view, Blur.convertFromView(vp));
         mBlurAsyncTask.execute((int) Value);
     }
 
@@ -86,7 +86,6 @@ public class BlurEffect implements Effect {
 //                Bitmap b
 //                        =Bitmap.createScaledBitmap(mOriginalBitmap, mOriginalBitmap.getWidth() / 4,
 //                        mOriginalBitmap.getHeight() / 4, false);
-//
 //                if (b == null) {
 //                    b = mOriginalBitmap;
 //                }

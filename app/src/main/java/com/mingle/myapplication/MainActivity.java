@@ -118,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
         //从menu 中设置数据源
         mSweetSheet2.setMenuList(R.menu.menu_sweet);
         mSweetSheet2.setDelegate(new ViewPagerDelegate());
+        //这个是外面的那个背景操作，还是释放出去， 开闭做的很好，但是我们没有发现是如何实现的 ，就是这个思路
         mSweetSheet2.setBackgroundEffect(new DimEffect(0.5f));
         mSweetSheet2.setOnMenuItemClickListener(new SweetSheet.OnMenuItemClickListener() {
             @Override
