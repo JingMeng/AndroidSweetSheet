@@ -1,4 +1,4 @@
-package com.mingle.sweetpick;
+package com.mingle.sweetpick.delegate;
 
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
 import com.mingle.adapter.ViewpagerAdapter;
 import com.mingle.entity.MenuEntity;
+import com.mingle.sweetpick.SweetSheet;
 import com.mingle.viewhandler.MenuListViewHandler;
 import com.mingle.sweetsheet.R;
 import com.mingle.widget.FreeGrowUpParentRelativeLayout;

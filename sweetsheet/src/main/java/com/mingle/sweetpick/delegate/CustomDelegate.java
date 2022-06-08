@@ -1,4 +1,4 @@
-package com.mingle.sweetpick;
+package com.mingle.sweetpick.delegate;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +10,7 @@ import android.view.animation.LayoutAnimationController;
 import android.widget.RelativeLayout;
 
 import com.mingle.entity.MenuEntity;
+import com.mingle.sweetpick.SweetSheet;
 import com.mingle.sweetsheet.R;
 import com.mingle.widget.CRImageView;
 import com.mingle.widget.FreeGrowUpParentRelativeLayout;

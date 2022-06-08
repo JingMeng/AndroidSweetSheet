@@ -6,12 +6,12 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
 import com.mingle.entity.MenuEntity;
+import com.mingle.sweetpick.delegate.Delegate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -190,7 +190,7 @@ public class SweetSheet {
         return list;
     }
 
-    protected enum Status {
+    public enum Status {
 
         SHOW, SHOWING,
         DISMISS, DISMISSING

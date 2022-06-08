@@ -1,4 +1,4 @@
-package com.mingle.sweetpick;
+package com.mingle.sweetpick.delegate;
 
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,6 +7,8 @@ import android.widget.ImageView;
 
 import com.mingle.SimpleAnimationListener;
 import com.mingle.entity.MenuEntity;
+import com.mingle.sweetpick.Effect;
+import com.mingle.sweetpick.SweetSheet;
 import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.ObjectAnimator;
 import com.nineoldandroids.view.ViewHelper;
@@ -39,7 +41,7 @@ public abstract class Delegate implements View.OnClickListener {
      * 和
      * @see android.widget.FrameLayout 作为父布局
      */
-    protected void init(ViewGroup parentVG) {
+    public void init(ViewGroup parentVG) {
         mParentVG = parentVG;
         mBg = new ImageView(parentVG.getContext());
         mRootView = createView();
@@ -58,9 +60,9 @@ public abstract class Delegate implements View.OnClickListener {
      *
      * @param list
      */
-    protected abstract void setMenuList(List<MenuEntity> list);
+    public abstract void setMenuList(List<MenuEntity> list);
 
-    protected void toggle() {
+    public void toggle() {
 
         switch (mStatus) {
 
@@ -79,7 +81,7 @@ public abstract class Delegate implements View.OnClickListener {
         }
     }
 
-    protected void show() {
+    public void show() {
         if (getStatus() != SweetSheet.Status.DISMISS) {
             return;
         }
@@ -133,7 +135,7 @@ public abstract class Delegate implements View.OnClickListener {
     /**
      * 消失  这个也是 nineoldandroids 里面的
      */
-    protected void dismiss() {
+    public void dismiss() {
         if (getStatus() == SweetSheet.Status.DISMISS) {
             return;
         }
@@ -162,12 +164,12 @@ public abstract class Delegate implements View.OnClickListener {
     }
 
 
-    protected void setBackgroundEffect(Effect effect) {
+    public void setBackgroundEffect(Effect effect) {
         mEffect = effect;
 
     }
 
-    protected void setOnMenuItemClickListener(SweetSheet.OnMenuItemClickListener onItemClickListener) {
+    public void setOnMenuItemClickListener(SweetSheet.OnMenuItemClickListener onItemClickListener) {
         mOnMenuItemClickListener = onItemClickListener;
     }
 
@@ -184,7 +186,7 @@ public abstract class Delegate implements View.OnClickListener {
         }, 300);
     }
 
-    protected SweetSheet.Status getStatus() {
+    public SweetSheet.Status getStatus() {
         return mStatus;
     }
 
