@@ -77,7 +77,7 @@ public class RecyclerViewDelegate extends Delegate {
 
 
     @Override
-    protected void setMenuList(final List<MenuEntity> menuEntities) {
+    public void setMenuList(final List<MenuEntity> menuEntities) {
 
         mMenuRVAdapter = new MenuRVAdapter(menuEntities, SweetSheet.Type.RecyclerView);
         mRV.setAdapter(mMenuRVAdapter);
@@ -124,7 +124,7 @@ public class RecyclerViewDelegate extends Delegate {
     }
 
     @Override
-    protected void show() {
+    public void show() {
         super.show();
         ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 
@@ -137,7 +137,7 @@ public class RecyclerViewDelegate extends Delegate {
     }
 
     @Override
-    protected void dismiss() {
+    public void dismiss() {
         super.dismiss();
 
     }

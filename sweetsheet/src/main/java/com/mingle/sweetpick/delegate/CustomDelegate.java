@@ -66,7 +66,7 @@ public class CustomDelegate extends Delegate {
                 .inflate(R.layout.layout_custom_sweet, null, false);
 
         mSweetView = (SweetView) rootView.findViewById(R.id.sv);
-	mSweetView.setSweetSheetColor(sweetSheetColor);
+        mSweetView.setSweetSheetColor(sweetSheetColor);
         mFreeGrowUpParentRelativeLayout = (FreeGrowUpParentRelativeLayout) rootView.findViewById(R.id.freeGrowUpParentF);
         mContentRL = (RelativeLayout) rootView.findViewById(R.id.rl);
         sliderIm = (CRImageView) rootView.findViewById(R.id.sliderIM);
@@ -92,7 +92,7 @@ public class CustomDelegate extends Delegate {
             mAnimationView.setLayoutAnimation(layoutAnimationController);
         }
 
-        if(mContentViewHeight > 0){
+        if (mContentViewHeight > 0) {
             mFreeGrowUpParentRelativeLayout.setContentHeight(mContentViewHeight);
         }
 
@@ -100,16 +100,16 @@ public class CustomDelegate extends Delegate {
     }
 
     @Override
-    protected void setMenuList(final List<MenuEntity> menuEntities) {
+    public void setMenuList(final List<MenuEntity> menuEntities) {
 
     }
 
-    public  CustomDelegate setContentHeight(int height){
+    public CustomDelegate setContentHeight(int height) {
 
-        if(height >0 && mFreeGrowUpParentRelativeLayout != null){
+        if (height > 0 && mFreeGrowUpParentRelativeLayout != null) {
             mFreeGrowUpParentRelativeLayout.setContentHeight(height);
-        }else{
-            mContentViewHeight=height;
+        } else {
+            mContentViewHeight = height;
         }
         return this;
 
@@ -121,7 +121,7 @@ public class CustomDelegate extends Delegate {
 
 
     @Override
-    protected void show() {
+    public void show() {
         super.show();
         ViewGroup.LayoutParams lp =
                 new ViewGroup.LayoutParams
@@ -186,7 +186,7 @@ public class CustomDelegate extends Delegate {
             if (mStatus == SweetSheet.Status.SHOWING) {
                 mStatus = SweetSheet.Status.SHOW;
 
-                if(mIsDragEnable) {
+                if (mIsDragEnable) {
                     sliderIm.setVisibility(View.VISIBLE);
                     sliderIm.circularReveal(sliderIm.getWidth() / 2, sliderIm.getHeight() / 2, 0, sliderIm.getWidth());
                 }

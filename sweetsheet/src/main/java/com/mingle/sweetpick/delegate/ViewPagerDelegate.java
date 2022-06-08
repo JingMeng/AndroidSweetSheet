@@ -68,7 +68,7 @@ public class ViewPagerDelegate extends Delegate {
 
 
     @Override
-    protected void dismiss() {
+    public void dismiss() {
         super.dismiss();
     }
 
@@ -85,7 +85,7 @@ public class ViewPagerDelegate extends Delegate {
 
 
     @Override
-    protected void setMenuList(List<MenuEntity> menuEntities) {
+    public void setMenuList(List<MenuEntity> menuEntities) {
 
         mMenuEntities=menuEntities;
         mMenuListViewHandlers = new ArrayList<>();
@@ -126,7 +126,7 @@ public class ViewPagerDelegate extends Delegate {
 
 
     @Override
-    protected void show() {
+    public void show() {
         super.show();
         ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 
@@ -140,7 +140,7 @@ public class ViewPagerDelegate extends Delegate {
 
 
     @Override
-    protected void setOnMenuItemClickListener(SweetSheet.OnMenuItemClickListener onItemClickListener) {
+    public void setOnMenuItemClickListener(SweetSheet.OnMenuItemClickListener onItemClickListener) {
         mOnMenuItemClickListener = onItemClickListener;
 
     }
