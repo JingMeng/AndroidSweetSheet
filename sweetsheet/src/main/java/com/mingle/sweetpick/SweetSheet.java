@@ -24,17 +24,18 @@ import java.util.List;
  */
 public class SweetSheet {
 
-    public static final String Tag="SweetSheet";
-    public enum Type{
-        RecyclerView,Viewpager,Custom
+    public static final String Tag = "SweetSheet";
+
+    public enum Type {
+        RecyclerView, Viewpager, Custom
     }
 
 
     private ViewGroup mParentVG;
     private Delegate mDelegate;
-    private Effect mEffect=new NoneEffect();
+    private Effect mEffect = new NoneEffect();
     private OnMenuItemClickListener mOnMenuItemClickListener;
-    private boolean mIsBgClickEnable=true;
+    private boolean mIsBgClickEnable = true;
 
 
     public SweetSheet(RelativeLayout parentVG) {
@@ -45,13 +46,8 @@ public class SweetSheet {
         mParentVG = parentVG;
     }
 
-
-
     public SweetSheet(ViewGroup parentVG) {
-
-        if (parentVG instanceof FrameLayout || parentVG instanceof RelativeLayout) {
-
-        } else {
+        if (!(parentVG instanceof FrameLayout) && !(parentVG instanceof RelativeLayout)) {
             throw new IllegalStateException("ViewGroup  must FrameLayout or  RelativeLayout.");
         }
         mParentVG = parentVG;
@@ -59,11 +55,10 @@ public class SweetSheet {
     }
 
 
-    public void setDelegate(Delegate delegate){
-        mDelegate=delegate;
+    public void setDelegate(Delegate delegate) {
+        mDelegate = delegate;
         mDelegate.init(mParentVG);
         setup();
-
     }
 
     public Delegate getDelegate() {
@@ -72,11 +67,10 @@ public class SweetSheet {
 
 
     private void setup() {
-
-        if(mOnMenuItemClickListener != null){
+        if (mOnMenuItemClickListener != null) {
             mDelegate.setOnMenuItemClickListener(mOnMenuItemClickListener);
         }
-        if(mMenuEntities != null){
+        if (mMenuEntities != null) {
             mDelegate.setMenuList(mMenuEntities);
         }
         mDelegate.setBackgroundEffect(mEffect);
@@ -84,83 +78,76 @@ public class SweetSheet {
     }
 
 
-    public void setBackgroundClickEnable(boolean isBgClickEnable){
-        if(mDelegate != null){
+    public void setBackgroundClickEnable(boolean isBgClickEnable) {
+        if (mDelegate != null) {
             mDelegate.setBackgroundClickEnable(isBgClickEnable);
-        }else{
-            mIsBgClickEnable=isBgClickEnable;
+        } else {
+            mIsBgClickEnable = isBgClickEnable;
         }
     }
 
 
     public void setBackgroundEffect(Effect effect) {
-
-        if(mDelegate != null) {
+        if (mDelegate != null) {
             mDelegate.setBackgroundEffect(effect);
-        }else{
-            mEffect=effect;
+        } else {
+            mEffect = effect;
         }
     }
 
 
     public void setOnMenuItemClickListener(OnMenuItemClickListener onItemClickListener) {
-        if(mDelegate != null) {
+        if (mDelegate != null) {
             mDelegate.setOnMenuItemClickListener(onItemClickListener);
-        }else{
-            mOnMenuItemClickListener=onItemClickListener;
+        } else {
+            mOnMenuItemClickListener = onItemClickListener;
         }
     }
 
 
     public void show() {
-
-        if(mDelegate != null) {
-
+        if (mDelegate != null) {
             mDelegate.show();
-        }else{
-            Log.e(Tag,"you must setDelegate before");
+        } else {
+            Log.e(Tag, "you must setDelegate before");
         }
     }
 
     public void dismiss() {
-        if(mDelegate != null) {
+        if (mDelegate != null) {
 
             mDelegate.dismiss();
-        }else{
-            Log.e(Tag,"you must setDelegate before");
+        } else {
+            Log.e(Tag, "you must setDelegate before");
         }
 
     }
 
     public void toggle() {
-        if(mDelegate != null) {
-
+        if (mDelegate != null) {
             mDelegate.toggle();
-        }else{
-            Log.e(Tag,"you must setDelegate before");
+        } else {
+            Log.e(Tag, "you must setDelegate before");
         }
 
     }
 
     public boolean isShow() {
 
-        if(mDelegate == null) {
-
-           return  false;
+        if (mDelegate == null) {
+            return false;
         }
-        if (mDelegate.getStatus() == Status.SHOW || mDelegate.getStatus() == Status.SHOWING) {
-            return true;
-        }
-        return false;
+        return mDelegate.getStatus() == Status.SHOW || mDelegate.getStatus() == Status.SHOWING;
     }
+
     private List<MenuEntity> mMenuEntities;
 
     public void setMenuList(List<MenuEntity> menuEntities) {
-        if(mDelegate != null) {
+        if (mDelegate != null) {
 
             mDelegate.setMenuList(menuEntities);
-        }else{
-            mMenuEntities=menuEntities;
+        } else {
+            mMenuEntities = menuEntities;
         }
 
     }
@@ -171,11 +158,11 @@ public class SweetSheet {
         new MenuInflater(mParentVG.getContext()).inflate(menuRes, menu);
         List<MenuEntity> menuEntities = getMenuEntityFormMenuRes(menu);
 
-        if(mDelegate != null) {
+        if (mDelegate != null) {
 
             mDelegate.setMenuList(menuEntities);
-        }else{
-            mMenuEntities=menuEntities;
+        } else {
+            mMenuEntities = menuEntities;
         }
 
     }

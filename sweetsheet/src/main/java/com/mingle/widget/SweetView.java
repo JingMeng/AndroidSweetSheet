@@ -22,6 +22,8 @@ import com.nineoldandroids.animation.ValueAnimator;
  * @version 1.0
  * @date 2015/8/5.
  * @github: https://github.com/zzz40500
+ * <p>
+ * 这个可能就是那个动画的感觉---------是的，把这个注销掉，在RecyclerViewDelegate 中，那种效果就会消失
  */
 public class SweetView extends View {
 
@@ -182,6 +184,12 @@ public class SweetView extends View {
 
         void onEnd();
 
+        /**
+         * 延迟一段时间展示，这个展示的效果给人飞感觉不是从最底部展示出来的，而是从中间，显得时间没有那么长
+         * <p>
+         * fixme 2022年6月8日20:38:07
+         * 你需要考虑那个动画，就是rv的item没有那个动画是什么展示效果，然后怎么得到想到的效果
+         */
         void onContentShow();
 
     }

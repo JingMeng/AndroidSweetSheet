@@ -32,6 +32,13 @@ public abstract class Delegate implements View.OnClickListener {
 
     protected SweetSheet.OnMenuItemClickListener mOnMenuItemClickListener;
 
+    /**
+     * 这个地方的mBg 就可以决定，这个地方只能使用
+     *
+     * @see android.widget.RelativeLayout
+     * 和
+     * @see android.widget.FrameLayout 作为父布局
+     */
     protected void init(ViewGroup parentVG) {
         mParentVG = parentVG;
         mBg = new ImageView(parentVG.getContext());
@@ -73,7 +80,6 @@ public abstract class Delegate implements View.OnClickListener {
     }
 
     protected void show() {
-
         if (getStatus() != SweetSheet.Status.DISMISS) {
             return;
         }
@@ -85,6 +91,8 @@ public abstract class Delegate implements View.OnClickListener {
 
     /**
      * 显示模糊背景
+     * <p>
+     * 子类先会调用父类方法，在调用自己的方法，就会导致背景的图层在底部，上面展示自定义的部分
      */
     protected void showShowdown() {
 
@@ -95,7 +103,6 @@ public abstract class Delegate implements View.OnClickListener {
         if (mBg.getParent() != null) {
             mParentVG.removeView(mBg);
         }
-
         mParentVG.addView(mBg, lp);
         ViewHelper.setAlpha(mBg, 0);
         ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(mBg, "alpha", 0, 1);
@@ -169,8 +176,6 @@ public abstract class Delegate implements View.OnClickListener {
      * 延时消失
      */
     protected void delayedDismiss() {
-
-
         mParentVG.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -186,8 +191,6 @@ public abstract class Delegate implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         dismiss();
-
-
     }
 
     public void setBackgroundClickEnable(boolean isBgClickEnable) {

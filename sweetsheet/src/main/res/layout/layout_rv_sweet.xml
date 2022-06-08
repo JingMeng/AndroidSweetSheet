@@ -1,23 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_gravity="bottom"
+        android:background="@color/abc_input_method_navigation_guard"
+        android:visibility="gone" />
+
+
+    <!--    有越界的迹象，但是也有一个内部放到offset 是padding吧-->
+    <!--    你删除 layout_gravity 这个属性，你会发现展示的位置改变了，所以说这个属性有用的-->
     <com.mingle.widget.FreeGrowUpParentRelativeLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/freeGrowUpParentF"
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="@dimen/sheet_height"
-        app:offset="@dimen/arc_max_height"
         android:layout_gravity="bottom"
-        >
+        app:offset="@dimen/arc_max_height">
 
         <com.mingle.widget.SweetView
             android:id="@+id/sv"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv"
@@ -27,8 +36,7 @@
             android:layout_marginTop="70dp"
             android:clipChildren="false"
             android:layoutAnimation="@anim/rv_layout_animation"
-            android:overScrollMode="never"
-            />
+            android:overScrollMode="never" />
 
         <com.mingle.widget.CRImageView
             android:id="@+id/sliderIM"
@@ -37,7 +45,7 @@
             android:layout_alignParentRight="true"
             android:layout_marginTop="40dp"
             android:padding="10dp"
-            android:src="@drawable/ic_slider_line"/>
+            android:src="@drawable/ic_slider_line" />
 
     </com.mingle.widget.FreeGrowUpParentRelativeLayout>
 </FrameLayout>

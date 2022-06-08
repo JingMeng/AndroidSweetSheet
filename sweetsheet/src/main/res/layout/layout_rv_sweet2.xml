@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <!--   fixme 2022年6月8日21:21:26 顶层布局还是被舍弃了，那也就意味着，是这个布局可以没有用了，但是他传递的null没有使用，这就是一个问题了
+    需要修改代码了-->
+
+    <!--    android:layout_gravity="bottom" 可能不确定父布局是什么吧-->
+    <com.mingle.widget.FreeGrowUpParentRelativeLayout
+        android:id="@+id/freeGrowUpParentF"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/sheet_height"
+        android:layout_gravity="bottom"
+        app:offset="@dimen/arc_max_height">
+
+        <com.mingle.widget.SweetView
+            android:id="@+id/sv"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="70dp"
+            android:clipChildren="false"
+            android:layoutAnimation="@anim/rv_layout_animation"
+            android:overScrollMode="never" />
+
+        <com.mingle.widget.CRImageView
+            android:id="@+id/sliderIM"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="40dp"
+            android:padding="10dp"
+            android:src="@drawable/ic_slider_line" />
+
+    </com.mingle.widget.FreeGrowUpParentRelativeLayout>
+</FrameLayout>

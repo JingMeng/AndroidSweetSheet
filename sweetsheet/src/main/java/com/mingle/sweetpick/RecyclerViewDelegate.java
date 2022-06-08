@@ -24,8 +24,10 @@ import java.util.List;
  * @version 1.0
  * @date 2015/8/5.
  * @github: https://github.com/zzz40500
+ * <p>
+ * 必须多个动画一起交互才会显得自然，让人一下子分析不出来
  */
-public class RecyclerViewDelegate extends Delegate  {
+public class RecyclerViewDelegate extends Delegate {
 
     private SweetView mSweetView;
     private RecyclerView mRV;
@@ -36,11 +38,11 @@ public class RecyclerViewDelegate extends Delegate  {
     private int mContentViewHeight;
 
     public RecyclerViewDelegate(boolean dragEnable) {
-        mIsDragEnable=dragEnable;
+        mIsDragEnable = dragEnable;
 
     }
 
-    public RecyclerViewDelegate(boolean dragEnable  ,int contentViewHeight) {
+    public RecyclerViewDelegate(boolean dragEnable, int contentViewHeight) {
         mContentViewHeight = contentViewHeight;
         mIsDragEnable = dragEnable;
     }
@@ -48,8 +50,7 @@ public class RecyclerViewDelegate extends Delegate  {
     @Override
     protected View createView() {
 
-        View rootView = LayoutInflater.from(mParentVG.getContext())
-                .inflate(R.layout.layout_rv_sweet, null, false);
+        View rootView = LayoutInflater.from(mParentVG.getContext()).inflate(R.layout.layout_rv_sweet, null, false);
 
         mSweetView = (SweetView) rootView.findViewById(R.id.sv);
         mFreeGrowUpParentRelativeLayout = (FreeGrowUpParentRelativeLayout) rootView.findViewById(R.id.freeGrowUpParentF);
@@ -57,25 +58,21 @@ public class RecyclerViewDelegate extends Delegate  {
         sliderIm = (CRImageView) rootView.findViewById(R.id.sliderIM);
         mRV.setLayoutManager(new LinearLayoutManager(mParentVG.getContext(), LinearLayoutManager.VERTICAL, false));
         mSweetView.setAnimationListener(new AnimationImp());
-        if(mContentViewHeight > 0){
+        if (mContentViewHeight > 0) {
             mFreeGrowUpParentRelativeLayout.setContentHeight(mContentViewHeight);
         }
 
         return rootView;
     }
 
-    public  RecyclerViewDelegate setContentHeight(int height){
-
-        if(height >0 && mFreeGrowUpParentRelativeLayout != null){
+    public RecyclerViewDelegate setContentHeight(int height) {
+        if (height > 0 && mFreeGrowUpParentRelativeLayout != null) {
             mFreeGrowUpParentRelativeLayout.setContentHeight(height);
-        }else{
-            mContentViewHeight=height;
+        } else {
+            mContentViewHeight = height;
         }
-
         return this;
-
     }
-
 
 
     @Override
@@ -128,14 +125,12 @@ public class RecyclerViewDelegate extends Delegate  {
     @Override
     protected void show() {
         super.show();
-        ViewGroup.LayoutParams lp =
-                new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 
-
-        if(mRootView.getParent()!= null){
+        //这个删除和添加的目的是什么？？？
+        if (mRootView.getParent() != null) {
             mParentVG.removeView(mRootView);
         }
-
         mParentVG.addView(mRootView, lp);
         mSweetView.show();
     }
@@ -159,13 +154,9 @@ public class RecyclerViewDelegate extends Delegate  {
 
         @Override
         public void onEnd() {
-
-
-            if(  mStatus==SweetSheet.Status.SHOWING) {
-
+            if (mStatus == SweetSheet.Status.SHOWING) {
                 mStatus = SweetSheet.Status.SHOW;
-
-                if(mIsDragEnable) {
+                if (mIsDragEnable) {
                     sliderIm.setVisibility(View.VISIBLE);
                     sliderIm.circularReveal(sliderIm.getWidth() / 2, sliderIm.getHeight() / 2, 0, sliderIm.getWidth());
                 }
@@ -177,6 +168,7 @@ public class RecyclerViewDelegate extends Delegate  {
         public void onContentShow() {
             mRV.setVisibility(View.VISIBLE);
             mRV.setAdapter(mMenuRVAdapter);
+            //加上这句话，似乎每次都会展示出来那个动画效果
             mRV.scheduleLayoutAnimation();
         }
     }
