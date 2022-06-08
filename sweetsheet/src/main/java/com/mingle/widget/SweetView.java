@@ -22,23 +22,23 @@ import com.nineoldandroids.animation.ValueAnimator;
  * @version 1.0
  * @date 2015/8/5.
  * @github: https://github.com/zzz40500
- *
  */
 public class SweetView extends View {
 
     private Paint mPaint;
     private int mArcHeight;
-    private  int mMaxArcHeight;
-    private  Status mStatus=Status.NONE;
+    private int mMaxArcHeight;
+    private Status mStatus = Status.NONE;
     private AnimationListener mAnimationListener;
-    private    Path mPath = new Path();
+    private Path mPath = new Path();
 
-    public enum Status{
+    public enum Status {
         NONE,
         STATUS_SMOOTH_UP,
         STATUS_UP,
         STATUS_DOWN,
     }
+
     public SweetView(Context context) {
         super(context);
         init();
@@ -60,7 +60,7 @@ public class SweetView extends View {
         mPaint.setAntiAlias(true);
         //mPaint.setStyle(Paint.Style.FILL);
         mPaint.setColor(getResources().getColor(android.R.color.white));
-        mMaxArcHeight=getResources().getDimensionPixelSize(R.dimen.arc_max_height);
+        mMaxArcHeight = getResources().getDimensionPixelSize(R.dimen.arc_max_height);
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
@@ -74,11 +74,12 @@ public class SweetView extends View {
         super.onDraw(canvas);
         drawBG(canvas);
     }
+
     public void show() {
-        mStatus=Status.STATUS_SMOOTH_UP;
+        mStatus = Status.STATUS_SMOOTH_UP;
 
 
-        if(mAnimationListener != null) {
+        if (mAnimationListener != null) {
             mAnimationListener.onStart();
             this.postDelayed(new Runnable() {
                 @Override
@@ -89,7 +90,7 @@ public class SweetView extends View {
             }, 600);
         }
 
-        ValueAnimator valueAnimator=ValueAnimator.ofInt(0, mMaxArcHeight);
+        ValueAnimator valueAnimator = ValueAnimator.ofInt(0, mMaxArcHeight);
         valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
@@ -107,9 +108,15 @@ public class SweetView extends View {
         valueAnimator.start();
 
     }
-    public void duang(){
-        mStatus=Status.STATUS_DOWN;
-        ValueAnimator valueAnimator=ValueAnimator.ofInt(mMaxArcHeight,0);
+
+    /**
+     * fixme 2022年6月8日17:57:13
+     * 那个回弹的效果
+     * 来自这里
+     */
+    public void duang() {
+        mStatus = Status.STATUS_DOWN;
+        ValueAnimator valueAnimator = ValueAnimator.ofInt(mMaxArcHeight, 0);
         valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
@@ -137,14 +144,14 @@ public class SweetView extends View {
 
     private void drawBG(Canvas canvas) {
         mPath.reset();
-        int currentPointY=0;
-        switch (mStatus){
+        int currentPointY = 0;
+        switch (mStatus) {
             case NONE:
                 currentPointY = mMaxArcHeight;
                 break;
-            case  STATUS_SMOOTH_UP:
+            case STATUS_SMOOTH_UP:
             case STATUS_UP:
-                currentPointY=getHeight()-(int) ((getHeight()-mMaxArcHeight)* Math.min(1,(mArcHeight-mMaxArcHeight /4 )* 2.0 / mMaxArcHeight * 1.3));
+                currentPointY = getHeight() - (int) ((getHeight() - mMaxArcHeight) * Math.min(1, (mArcHeight - mMaxArcHeight / 4) * 2.0 / mMaxArcHeight * 1.3));
                 break;
             case STATUS_DOWN:
                 currentPointY = mMaxArcHeight;
@@ -161,7 +168,6 @@ public class SweetView extends View {
     }
 
 
-
     public AnimationListener getAnimationListener() {
         return mAnimationListener;
     }
@@ -170,10 +176,12 @@ public class SweetView extends View {
         mAnimationListener = animationListener;
     }
 
-    public interface  AnimationListener{
+    public interface AnimationListener {
 
-         void onStart();
+        void onStart();
+
         void onEnd();
+
         void onContentShow();
 
     }

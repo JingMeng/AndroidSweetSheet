@@ -1,7 +1,6 @@
 package com.mingle.adapter;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -83,6 +82,7 @@ public class MenuRVAdapter extends RecyclerView.Adapter<MenuRVAdapter.MenuVH> {
         ViewHelper.setTranslationY(menuVH.itemView, 300);
         ObjectAnimator translationY = ObjectAnimator.ofFloat(menuVH.itemView, "translationY", 500, 0);
         translationY.setDuration(300);
+        // FIXME: 2022/6/8  还是说是这个地方起作用的---------- 这个地方好验证，只要删除上面的那个调用就好了
         translationY.setInterpolator(new OvershootInterpolator(1.6f));
         ObjectAnimator alphaIn = ObjectAnimator.ofFloat(menuVH.itemView, "alpha", 0, 1);
         alphaIn.setDuration(100);

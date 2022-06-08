@@ -1,7 +1,5 @@
 package com.mingle.sweetpick;
 
-import android.graphics.Color;
-import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
@@ -30,7 +28,7 @@ public abstract class Delegate implements View.OnClickListener {
     protected View mRootView;
     private ImageView mBg;
     private Effect mEffect;
-    private boolean mIsBgClickEnable=true;
+    private boolean mIsBgClickEnable = true;
 
     protected SweetSheet.OnMenuItemClickListener mOnMenuItemClickListener;
 
@@ -43,12 +41,14 @@ public abstract class Delegate implements View.OnClickListener {
 
     /**
      * 生成视图
+     *
      * @return
      */
     protected abstract View createView();
 
     /**
      * 设置数据源
+     *
      * @param list
      */
     protected abstract void setMenuList(List<MenuEntity> list);
@@ -83,17 +83,16 @@ public abstract class Delegate implements View.OnClickListener {
     }
 
 
-
     /**
      * 显示模糊背景
      */
     protected void showShowdown() {
 
         ViewHelper.setTranslationY(mRootView, 0);
-        mEffect.effect(mParentVG,mBg);
+        mEffect.effect(mParentVG, mBg);
         ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 
-        if(mBg.getParent()!= null){
+        if (mBg.getParent() != null) {
             mParentVG.removeView(mBg);
         }
 
@@ -125,17 +124,16 @@ public abstract class Delegate implements View.OnClickListener {
     }
 
     /**
-     * 消失
+     * 消失  这个也是 nineoldandroids 里面的
      */
     protected void dismiss() {
-        if (getStatus() == SweetSheet.Status.DISMISS){
+        if (getStatus() == SweetSheet.Status.DISMISS) {
             return;
         }
         mBg.setClickable(false);
         dismissShowdown();
 
-        ObjectAnimator translationOut = ObjectAnimator.ofFloat(mRootView,
-                "translationY", 0, mRootView.getHeight());
+        ObjectAnimator translationOut = ObjectAnimator.ofFloat(mRootView, "translationY", 0, mRootView.getHeight());
         translationOut.setDuration(600);
         translationOut.setInterpolator(new DecelerateInterpolator());
         translationOut.addListener(new SimpleAnimationListener() {
@@ -158,7 +156,7 @@ public abstract class Delegate implements View.OnClickListener {
 
 
     protected void setBackgroundEffect(Effect effect) {
-        mEffect=effect;
+        mEffect = effect;
 
     }
 
@@ -192,7 +190,7 @@ public abstract class Delegate implements View.OnClickListener {
 
     }
 
-    public void setBackgroundClickEnable(boolean isBgClickEnable){
-        mIsBgClickEnable=isBgClickEnable;
+    public void setBackgroundClickEnable(boolean isBgClickEnable) {
+        mIsBgClickEnable = isBgClickEnable;
     }
 }
