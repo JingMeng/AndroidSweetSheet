@@ -1,13 +1,11 @@
 package com.mingle.myapplication;
 
-import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -19,9 +17,11 @@ import com.mingle.sweetpick.RecyclerViewDelegate;
 import com.mingle.sweetpick.SweetSheet;
 import com.mingle.sweetpick.ViewPagerDelegate;
 
-
 import java.util.ArrayList;
 
+/**
+ * https://github.com/zzz40500/AndroidSweetSheet
+ */
 public class MainActivity extends AppCompatActivity {
 
     private SweetSheet mSweetSheet;
@@ -37,8 +37,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         rl = (RelativeLayout) findViewById(R.id.rl);
-        setupViewpager();
         setupRecyclerView();
+        setupViewpager();
         setupCustomView();
 
     }
@@ -46,10 +46,8 @@ public class MainActivity extends AppCompatActivity {
     private void setupCustomView() {
 
 
-
         mSweetSheet3 = new SweetSheet(rl);
-        CustomDelegate customDelegate = new CustomDelegate(true,
-                CustomDelegate.AnimationType.DuangLayoutAnimation);
+        CustomDelegate customDelegate = new CustomDelegate(true, CustomDelegate.AnimationType.DuangLayoutAnimation);
         View view = LayoutInflater.from(this).inflate(R.layout.layout_custom_view, null, false);
         customDelegate.setCustomView(view);
         mSweetSheet3.setDelegate(customDelegate);

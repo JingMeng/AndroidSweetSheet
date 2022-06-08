@@ -78,6 +78,7 @@ public class RecyclerViewDelegate extends Delegate  {
 
 
 
+    @Override
     protected void setMenuList(final List<MenuEntity> menuEntities) {
 
         mMenuRVAdapter = new MenuRVAdapter(menuEntities, SweetSheet.Type.RecyclerView);
@@ -124,6 +125,7 @@ public class RecyclerViewDelegate extends Delegate  {
         mMenuRVAdapter.notifyDataSetChanged();
     }
 
+    @Override
     protected void show() {
         super.show();
         ViewGroup.LayoutParams lp =

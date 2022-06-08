@@ -98,6 +98,7 @@ public class CustomDelegate extends Delegate {
         return rootView;
     }
 
+    @Override
     protected void setMenuList(final List<MenuEntity> menuEntities) {
 
     }
@@ -118,6 +119,7 @@ public class CustomDelegate extends Delegate {
     }
 
 
+    @Override
     protected void show() {
         super.show();
         ViewGroup.LayoutParams lp =

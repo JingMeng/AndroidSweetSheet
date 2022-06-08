@@ -83,7 +83,8 @@ public class ViewPagerDelegate extends Delegate {
     }
 
 
-    protected void setMenuList(  List<MenuEntity> menuEntities) {
+    @Override
+    protected void setMenuList(List<MenuEntity> menuEntities) {
 
         mMenuEntities=menuEntities;
         mMenuListViewHandlers = new ArrayList<>();
@@ -123,6 +124,7 @@ public class ViewPagerDelegate extends Delegate {
     }
 
 
+    @Override
     protected void show() {
         super.show();
         ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
