@@ -28,6 +28,7 @@ import com.nineoldandroids.animation.ValueAnimator;
 public class SweetView extends View {
 
     private Paint mPaint;
+    //看到这个地方了吗？ 是有圆弧的
     private int mArcHeight;
     private int mMaxArcHeight;
     private Status mStatus = Status.NONE;
@@ -100,7 +101,7 @@ public class SweetView extends View {
                 mArcHeight = value;
 
                 if (value == mMaxArcHeight) {
-                    duang();
+//                    duang();
                 }
                 invalidate();
             }

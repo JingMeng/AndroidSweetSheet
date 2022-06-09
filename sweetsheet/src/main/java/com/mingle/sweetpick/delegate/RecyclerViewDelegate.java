@@ -11,7 +11,6 @@ import android.widget.AdapterView;
 
 import com.mingle.adapter.MenuRVAdapter;
 import com.mingle.entity.MenuEntity;
-
 import com.mingle.sweetpick.SweetSheet;
 import com.mingle.sweetsheet.R;
 import com.mingle.widget.CRImageView;
@@ -35,6 +34,7 @@ public class RecyclerViewDelegate extends Delegate {
     private MenuRVAdapter mMenuRVAdapter;
     private CRImageView sliderIm;
     private FreeGrowUpParentRelativeLayout mFreeGrowUpParentRelativeLayout;
+    // FIXME: 2022年6月9日08:48:47  就是这个参数，展示是否可以左右滑动的那个操作
     private boolean mIsDragEnable;
     private int mContentViewHeight;
 

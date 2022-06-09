@@ -10,12 +10,12 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.mingle.entity.MenuEntity;
-import com.mingle.sweetpick.effect.BlurEffect;
-import com.mingle.sweetpick.delegate.CustomDelegate;
-import com.mingle.sweetpick.effect.DimEffect;
-import com.mingle.sweetpick.delegate.RecyclerViewDelegate;
 import com.mingle.sweetpick.SweetSheet;
+import com.mingle.sweetpick.delegate.CustomDelegate;
+import com.mingle.sweetpick.delegate.RecyclerViewDelegate;
 import com.mingle.sweetpick.delegate.ViewPagerDelegate;
+import com.mingle.sweetpick.effect.BlurEffect;
+import com.mingle.sweetpick.effect.DimEffect;
 
 import java.util.ArrayList;
 
@@ -117,9 +117,11 @@ public class MainActivity extends AppCompatActivity {
 
         //从menu 中设置数据源
         mSweetSheet2.setMenuList(R.menu.menu_sweet);
+        //设置展示模型
         mSweetSheet2.setDelegate(new ViewPagerDelegate());
-        //这个是外面的那个背景操作，还是释放出去， 开闭做的很好，但是我们没有发现是如何实现的 ，就是这个思路
+        //设置背景，这个是外面的那个背景操作，还是释放出去， 开闭做的很好，但是我们没有发现是如何实现的 ，就是这个思路
         mSweetSheet2.setBackgroundEffect(new DimEffect(0.5f));
+        //设置点击事件
         mSweetSheet2.setOnMenuItemClickListener(new SweetSheet.OnMenuItemClickListener() {
             @Override
             public boolean onItemClick(int position, MenuEntity menuEntity1) {
