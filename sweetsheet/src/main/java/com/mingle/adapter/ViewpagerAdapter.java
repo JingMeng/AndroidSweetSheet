@@ -37,7 +37,6 @@ public class ViewpagerAdapter extends PagerAdapter {
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
-
         container.removeView(mMenuListViewHandlers.get(position).onCreateView(container));
     }
 

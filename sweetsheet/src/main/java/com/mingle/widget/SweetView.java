@@ -7,6 +7,7 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.os.Build;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.OvershootInterpolator;
@@ -24,9 +25,12 @@ import com.nineoldandroids.animation.ValueAnimator;
  * @github: https://github.com/zzz40500
  * <p>
  * 这个可能就是那个动画的感觉---------是的，把这个注销掉，在RecyclerViewDelegate 中，那种效果就会消失
+ * <p>
+ * 就是来回做了一个贝塞尔曲线的动画，只不过回去的时候动画的前部分你能看到，后半部分被顶部的图层遮挡了，你看不见罢了
  */
 public class SweetView extends View {
 
+    private static final String TAG = "SweetView";
     private Paint mPaint;
     //看到这个地方了吗？ 是有圆弧的
     private int mArcHeight;
@@ -75,10 +79,25 @@ public class SweetView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        Log.i(TAG, System.currentTimeMillis() + "====onDraw==============");
         drawBG(canvas);
     }
 
+    @Override
+    protected void onFinishInflate() {
+        super.onFinishInflate();
+        Log.i(TAG, System.currentTimeMillis() + "====onFinishInflate===getMeasuredHeight===========" + getMeasuredHeight());
+    }
+
+    /**
+     * 这个方法执行的时间，竟然早于上面的 onDraw 方法
+     */
     public void show() {
+        Log.i(TAG, System.currentTimeMillis() + "====show==============" + mMaxArcHeight);
+
+        if (false) {
+            return;
+        }
         mStatus = Status.STATUS_SMOOTH_UP;
 
 
@@ -101,7 +120,7 @@ public class SweetView extends View {
                 mArcHeight = value;
 
                 if (value == mMaxArcHeight) {
-//                    duang();
+                    duang();
                 }
                 invalidate();
             }
@@ -148,6 +167,7 @@ public class SweetView extends View {
     private void drawBG(Canvas canvas) {
         mPath.reset();
         int currentPointY = 0;
+//        Log.i(TAG, System.currentTimeMillis() + "=========" + mStatus);
         switch (mStatus) {
             case NONE:
                 currentPointY = mMaxArcHeight;
@@ -162,6 +182,7 @@ public class SweetView extends View {
             default:
         }
 
+        //贝赛尔曲线
         mPath.moveTo(0, currentPointY);
         mPath.quadTo(getWidth() / 2, currentPointY - mArcHeight, getWidth(), currentPointY);
         mPath.lineTo(getWidth(), getHeight());

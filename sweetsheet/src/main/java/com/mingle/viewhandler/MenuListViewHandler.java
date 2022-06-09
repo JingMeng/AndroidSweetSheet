@@ -3,7 +3,6 @@ package com.mingle.viewhandler;
 
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,8 +10,8 @@ import android.widget.AdapterView;
 
 import com.mingle.adapter.MenuRVAdapter;
 import com.mingle.entity.MenuEntity;
-import com.mingle.sweetsheet.R;
 import com.mingle.sweetpick.SweetSheet;
+import com.mingle.sweetsheet.R;
 
 import java.util.List;
 
@@ -38,11 +37,11 @@ public class MenuListViewHandler {
     private int mNumColumns;
 
 
-    public static MenuListViewHandler getInstant(int index,int numColums, List<MenuEntity> menuEntities) {
+    public static MenuListViewHandler getInstant(int index, int numColums, List<MenuEntity> menuEntities) {
         MenuListViewHandler menuListViewHandler = new MenuListViewHandler();
-        menuListViewHandler.mMenuEntities=menuEntities;
-        menuListViewHandler.mIndex=index;
-        menuListViewHandler.mNumColumns=numColums;
+        menuListViewHandler.mMenuEntities = menuEntities;
+        menuListViewHandler.mIndex = index;
+        menuListViewHandler.mNumColumns = numColums;
         return menuListViewHandler;
     }
 
@@ -52,9 +51,12 @@ public class MenuListViewHandler {
     }
 
 
+    /**
+     * 这个地方考虑复用了，外部就不需要考虑服用方式的调用(或者说定义变量)
+     */
     public View onCreateView(ViewGroup container) {
-        if(mView == null){
-            mView =LayoutInflater.from(container.getContext()).inflate(R.layout.layout_grid_menu,container,false);
+        if (mView == null) {
+            mView = LayoutInflater.from(container.getContext()).inflate(R.layout.layout_grid_menu, container, false);
             onViewCreated(mView);
         }
         return mView;
@@ -62,7 +64,7 @@ public class MenuListViewHandler {
 
     public void onViewCreated(View view) {
 
-        if(mMenuEntities == null || mMenuEntities.size()==0){
+        if (mMenuEntities == null || mMenuEntities.size() == 0) {
             return;
         }
 
@@ -73,7 +75,6 @@ public class MenuListViewHandler {
         mMenuRVAdapter.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
                 if (mOnFragmentInteractionListener != null) {
                     mOnFragmentInteractionListener.onFragmentInteraction(mIndex * 6 + position);
                 }
@@ -93,7 +94,6 @@ public class MenuListViewHandler {
     }
 
     public void notifyAnimation() {
-
         if (mRV != null) {
             mRV.setVisibility(View.VISIBLE);
             mRvVisibility = View.VISIBLE;
