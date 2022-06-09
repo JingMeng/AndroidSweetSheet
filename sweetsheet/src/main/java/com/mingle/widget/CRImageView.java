@@ -3,7 +3,6 @@ package com.mingle.widget;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Canvas;
-
 import android.os.Build;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -15,10 +14,8 @@ import android.view.animation.Interpolator;
  * @version 1.0
  * @date 2015/8/8.
  * @github: https://github.com/zzz40500
- *
  */
 public class CRImageView extends android.widget.ImageView implements CircleRevealHelper.CircleRevealEnable {
-
 
 
     private CircleRevealHelper mCircleRevealHelper;
@@ -28,7 +25,6 @@ public class CRImageView extends android.widget.ImageView implements CircleRevea
         super(context);
         init();
     }
-
 
 
     public CRImageView(Context context, AttributeSet attrs) {
@@ -50,23 +46,24 @@ public class CRImageView extends android.widget.ImageView implements CircleRevea
     @Override
     public boolean onTouchEvent(MotionEvent event) {
 
-        if(getParent() instanceof  GrowUpParent){
-            return  ((GrowUpParent) getParent()).onParentHandMotionEvent(event);
+        // FIXME: 2022/6/9   重写了这个方法达到了能够滑动的目的
+        if (getParent() instanceof GrowUpParent) {
+            return ((GrowUpParent) getParent()).onParentHandMotionEvent(event);
         }
         return super.onTouchEvent(event);
     }
 
     private void init() {
 
-        mCircleRevealHelper=new CircleRevealHelper(this);
+        mCircleRevealHelper = new CircleRevealHelper(this);
 
     }
+
     @Override
     protected void onDraw(Canvas canvas) {
 
         mCircleRevealHelper.onDraw(canvas);
     }
-
 
 
     @Override
@@ -76,14 +73,13 @@ public class CRImageView extends android.widget.ImageView implements CircleRevea
 
     @Override
     public void circularReveal(int centerX, int centerY, float startRadius, float endRadius, long duration, Interpolator interpolator) {
-        mCircleRevealHelper.circularReveal(centerX,centerY,startRadius,endRadius,duration,interpolator);
+        mCircleRevealHelper.circularReveal(centerX, centerY, startRadius, endRadius, duration, interpolator);
     }
 
     @Override
     public void circularReveal(int centerX, int centerY, float startRadius, float endRadius) {
-        mCircleRevealHelper.circularReveal(centerX,centerY,startRadius,endRadius);
+        mCircleRevealHelper.circularReveal(centerX, centerY, startRadius, endRadius);
     }
-
 
 
 }

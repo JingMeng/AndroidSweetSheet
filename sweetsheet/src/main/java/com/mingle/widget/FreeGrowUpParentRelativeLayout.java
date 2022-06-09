@@ -110,12 +110,12 @@ public class FreeGrowUpParentRelativeLayout extends RelativeLayout implements Gr
         }
     }
 
+    // FIXME: 2022/6/9  这个就是那个拖拽变大的操作
     @Override
     public boolean onParentHandMotionEvent(MotionEvent event) {
 
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-
                 if (!checkGrowUpEnable()) {
                     return false;
                 }
