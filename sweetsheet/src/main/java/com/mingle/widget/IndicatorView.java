@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Interpolator;
 import android.widget.LinearLayout;
@@ -150,6 +151,7 @@ public class IndicatorView extends LinearLayout implements ViewPager.OnPageChang
 
     @Override
     public void circularReveal(int centerX, int centerY, float startRadius, float endRadius, long duration, Interpolator interpolator) {
+        Log.i("gainLength", centerX+"=====centerX=======centerX=====" + centerX);
         mCircleRevealHelper.circularReveal(centerX, centerY, startRadius, endRadius, duration, interpolator);
     }
 

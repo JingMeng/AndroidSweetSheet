@@ -54,7 +54,10 @@ public class CircleRevealHelper {
 
     public void circularReveal(int centerX, int centerY, float startRadius, float endRadius, long duration, Interpolator interpolator) {
 
-        Log.i("gainLength", System.currentTimeMillis() + "=====circularReveal====mAnchorX====" + mAnchorX + "=======mAnchorY=====" + mAnchorY + "====mView.getParent()=====" + mView.getParent());
+        //这个打印在这里，打印早了，所以打印出来的是0
+//        Log.i("gainLength", System.currentTimeMillis() + "=====circularReveal====mAnchorX====" + mAnchorX + "=======mAnchorY=====" + mAnchorY + "====mView.getParent()=====" + mView.getParent());
+
+        Log.i("gainLength", centerX+"=====centerX=======centerX=====" + centerX);
         mAnchorX = centerX;
         mAnchorY = centerY;
         if (mView.getParent() == null) {
