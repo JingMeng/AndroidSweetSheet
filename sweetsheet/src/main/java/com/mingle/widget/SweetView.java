@@ -66,6 +66,7 @@ public class SweetView extends View {
         mPaint = new Paint();
         mPaint.setAntiAlias(true);
         //mPaint.setStyle(Paint.Style.FILL);
+        // FIXME: 2022/6/9  默认就是一个白色的
         mPaint.setColor(getResources().getColor(android.R.color.white));
         mMaxArcHeight = getResources().getDimensionPixelSize(R.dimen.arc_max_height);
     }

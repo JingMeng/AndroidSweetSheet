@@ -43,21 +43,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void setupCustomView() {
-
-
-        mSweetSheet3 = new SweetSheet(rl);
-        CustomDelegate customDelegate = new CustomDelegate(true, CustomDelegate.AnimationType.DuangLayoutAnimation);
-        View view = LayoutInflater.from(this).inflate(R.layout.layout_custom_view, null, false);
-        customDelegate.setCustomView(view);
-        mSweetSheet3.setDelegate(customDelegate);
-        view.findViewById(R.id.button2).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mSweetSheet3.dismiss();
-            }
-        });
-    }
 
     private void setupRecyclerView() {
 
@@ -132,6 +117,33 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    private void setupCustomView() {
+
+
+        mSweetSheet3 = new SweetSheet(rl);
+        /**
+         *  根据 CustomDelegate.AnimationType.DuangLayoutAnimation 查找的动画
+         */
+        CustomDelegate customDelegate = new CustomDelegate(true, CustomDelegate.AnimationType.DuangLayoutAnimation);
+        View view = LayoutInflater.from(this).inflate(R.layout.layout_custom_view, null, false);
+        customDelegate.setCustomView(view);
+
+        if (false) {
+            //fixme 就是这个来控制颜色的，暂时没有设置控制操作 ,注意，别放一个int进入
+            customDelegate.setSweetSheetColor(getResources().getColor(R.color.slider_color_normal));
+        }
+        // TODO: 2022年6月9日14:33:41 这个地方才是真真正正的开始初始化
+        mSweetSheet3.setDelegate(customDelegate);
+
+
+        view.findViewById(R.id.button2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mSweetSheet3.dismiss();
+            }
+        });
     }
 
     @Override

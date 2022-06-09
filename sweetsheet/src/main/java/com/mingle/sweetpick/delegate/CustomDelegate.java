@@ -62,8 +62,7 @@ public class CustomDelegate extends Delegate {
     @Override
     public View createView() {
 
-        View rootView = LayoutInflater.from(mParentVG.getContext())
-                .inflate(R.layout.layout_custom_sweet, null, false);
+        View rootView = LayoutInflater.from(mParentVG.getContext()).inflate(R.layout.layout_custom_sweet, null, false);
 
         mSweetView = (SweetView) rootView.findViewById(R.id.sv);
         mSweetView.setSweetSheetColor(sweetSheetColor);
@@ -84,9 +83,10 @@ public class CustomDelegate extends Delegate {
             } else {
                 mAnimationView = mContentRL;
             }
-            Animation animation = AnimationUtils.loadAnimation(mContentRL.getContext(),
-                    R.anim.item_duang_show);
+            Animation animation = AnimationUtils.loadAnimation(mContentRL.getContext(), R.anim.item_duang_show);
 
+            //应该是这个动画起作用的
+            //https://blog.csdn.net/IO_Field/article/details/53100803
             LayoutAnimationController layoutAnimationController = new LayoutAnimationController(animation);
             layoutAnimationController.setDelay(0.1f);
             mAnimationView.setLayoutAnimation(layoutAnimationController);
@@ -182,10 +182,8 @@ public class CustomDelegate extends Delegate {
         @Override
         public void onEnd() {
 
-
             if (mStatus == SweetSheet.Status.SHOWING) {
                 mStatus = SweetSheet.Status.SHOW;
-
                 if (mIsDragEnable) {
                     sliderIm.setVisibility(View.VISIBLE);
                     sliderIm.circularReveal(sliderIm.getWidth() / 2, sliderIm.getHeight() / 2, 0, sliderIm.getWidth());
@@ -223,18 +221,15 @@ public class CustomDelegate extends Delegate {
                     throw new RuntimeException("you must invoke setCustomViewAnimation before ");
                 }
                 break;
+            default:
         }
     }
 
     private void alphaAnimation() {
-
-
         ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(getContentRelativeLayout(), "alpha", 0, 1);
         objectAnimator.setDuration(1200);
         objectAnimator.setInterpolator(new DecelerateInterpolator());
         objectAnimator.start();
-
-
     }
 
     private void duangAnimation() {
@@ -280,7 +275,7 @@ public class CustomDelegate extends Delegate {
         DuangAnimation,
         //这个是对这个 View 进行动画,它是简单额alpha 值变化
         AlphaAnimation,
-        //自定义的动画,需要调用
+        //自定义的动画,需要调用------------预留了自定义动画
         Custom
     }
 
