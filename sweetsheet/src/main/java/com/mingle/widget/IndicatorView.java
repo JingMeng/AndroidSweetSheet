@@ -3,6 +3,7 @@ package com.mingle.widget;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
@@ -86,15 +87,6 @@ public class IndicatorView extends LinearLayout implements ViewPager.OnPageChang
 
     }
 
-    private void setSelect(int i) {
-        View view = mIndicators.get(i);
-        view.setSelected(true);
-        if (mPreSelectPosition != -1) {
-            mIndicators.get(mPreSelectPosition).
-                    setSelected(false);
-        }
-        mPreSelectPosition = i;
-    }
 
     private void addIndicationView() {
 
@@ -134,6 +126,18 @@ public class IndicatorView extends LinearLayout implements ViewPager.OnPageChang
         }
     }
 
+    /**
+     * 这个是一个ViewGroup ，这个方法根本不会被调用
+     * 除非设置背景或者
+     * 调用
+     *
+     * @see LinearLayout
+     * {@link LinearLayout#setDividerDrawable(Drawable)} 里面的 setWillNotDraw
+     * <p>
+     * <p>
+     * 很显然，在本类中没有调用setWillNotDraw
+     * 在 ViewPagerDelegate 也没有设置背景
+     */
     @Override
     protected void onDraw(Canvas canvas) {
         mCircleRevealHelper.onDraw(canvas);
@@ -171,4 +175,14 @@ public class IndicatorView extends LinearLayout implements ViewPager.OnPageChang
 
     }
 
+    //设置选中状态
+    private void setSelect(int i) {
+        View view = mIndicators.get(i);
+        view.setSelected(true);
+        //不需要遍历，挺好的的
+        if (mPreSelectPosition != -1) {
+            mIndicators.get(mPreSelectPosition).setSelected(false);
+        }
+        mPreSelectPosition = i;
+    }
 }

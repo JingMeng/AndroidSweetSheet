@@ -146,6 +146,11 @@ public class SweetView extends View {
                 invalidate();
             }
         });
+        /**
+         * fixme 2022年6月9日11:26:49
+         * 这个地方 调用的end，动画都结束了，一定开启的那一帧已经过去了吧
+         *  但是这个是三方的控件 ，不是我们系统内的那一套 ，就会导致时间差出现问题，如果不是话，那为什么第一次得到的是0
+         */
         valueAnimator.addListener(new SimpleAnimationListener() {
 
 

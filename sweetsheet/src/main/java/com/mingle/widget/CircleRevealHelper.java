@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Path;
 import android.graphics.Region;
 import android.os.Build;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.animation.AccelerateDecelerateInterpolator;
@@ -21,6 +22,8 @@ import com.nineoldandroids.animation.ValueAnimator;
  */
 public class CircleRevealHelper {
 
+
+    private static final String TAG = "CircleRevealHelper";
 
     public CircleRevealHelper(View view) {
         mView = view;
@@ -51,11 +54,20 @@ public class CircleRevealHelper {
 
     public void circularReveal(int centerX, int centerY, float startRadius, float endRadius, long duration, Interpolator interpolator) {
 
+        Log.i("gainLength", System.currentTimeMillis() + "=====circularReveal====mAnchorX====" + mAnchorX + "=======mAnchorY=====" + mAnchorY + "====mView.getParent()=====" + mView.getParent());
         mAnchorX = centerX;
         mAnchorY = centerY;
         if (mView.getParent() == null) {
             return;
         }
+        /**
+         * https://blog.csdn.net/qq_27634797/article/details/76775244
+         * ViewAnimationUtils是Android5.0出来的API。其作用就是可以使控件能够呈现水波一样展开。先上一张效果图：
+         *
+         *
+         *  这个是从中间展开的，类似水波，从中间向两边展开
+         */
+        Log.i(TAG, "=====(Build.VERSION.SDK_INT >= 21)========" + (Build.VERSION.SDK_INT >= 21));
         if (Build.VERSION.SDK_INT >= 21) {
             Animator animator = ViewAnimationUtils.createCircularReveal(
                     mView,
@@ -104,7 +116,7 @@ public class CircleRevealHelper {
 
 
     protected void onDraw(Canvas canvas) {
-
+        Log.i(TAG, "=====onDraw=====isCircularReveal===" + isCircularReveal);
         if (isCircularReveal) {
             canvas.save();
             canvas.translate(0, 0);

@@ -1,6 +1,7 @@
 package com.mingle.sweetpick.delegate;
 
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -190,6 +191,8 @@ public class ViewPagerDelegate extends Delegate {
 
                 mIndicatorView.setVisibility(View.VISIBLE);
 
+                //这个时间早就布局完成了
+                Log.i("gainLength", "=====onEnd=======onEnd=====" + mIndicatorView.getWidth());
                 mIndicatorView.circularReveal(
                         mIndicatorView.getWidth() / 2,
                         mIndicatorView.getHeight() / 2,
